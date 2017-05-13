@@ -27,7 +27,7 @@ public class CanvasView extends View{
 
     Context context;
 
-//    the below compares floats - if the TOLERANCE is below the given amount, they are considered equal
+//    the below compares floats - if the TOLERANCE is below the given amount (in pixels), they are considered equal
     private static final float TOLERANCE = 5;
 
     public CanvasView(Context context, AttributeSet attrs) {
@@ -56,6 +56,13 @@ public class CanvasView extends View{
 
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        canvas.drawPath(mPath, mPaint);
     }
 
     private void firstTouch(float x, float y){
