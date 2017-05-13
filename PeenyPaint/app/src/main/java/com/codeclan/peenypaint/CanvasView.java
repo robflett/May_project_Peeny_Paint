@@ -66,7 +66,7 @@ public class CanvasView extends View{
     }
 
     private void firstTouch(float x, float y){
-        mPath = moveTo(x, y);
+        mPath.moveTo(x, y);
         mX = x;
         mY = y;
     }
@@ -97,15 +97,15 @@ public class CanvasView extends View{
         float y = event.getY();
 
         switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN;
+            case MotionEvent.ACTION_DOWN:
                 firstTouch(x, y);
                 invalidate();
                 break;
-            case MotionEvent.ACTION_MOVE;
+            case MotionEvent.ACTION_MOVE:
                 moveTouch(x, y);
                 invalidate();
                 break;
-            case MotionEvent.ACTION_UP;
+            case MotionEvent.ACTION_UP:
                 upTouch();
                 invalidate();
                 break;
