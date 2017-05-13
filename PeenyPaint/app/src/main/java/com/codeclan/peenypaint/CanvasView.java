@@ -44,7 +44,10 @@ public class CanvasView extends View{
 
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
-        mPaint.setStrokeWidth(5f);
+        mPaint.setStrokeWidth(20f);
+
+
+
 
     }
 
@@ -56,6 +59,13 @@ public class CanvasView extends View{
 
         mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
+
+//        below is an attempt to set the canvas background to black.
+//        Bitmap newBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), mBitmap.getConfig());
+//        Canvas canvas = new Canvas(newBitmap);
+//        canvas.drawColor(Color.BLACK);
+//        canvas.drawBitmap(mBitmap, 0, 0, null);
+
     }
 
     @Override
