@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class CanvasView extends View{
@@ -26,7 +27,7 @@ public class CanvasView extends View{
 
     Context context;
 
-//    the below compares floats - if the tolerance is below the given amount, they are considered equal
+//    the below compares floats - if the TOLERANCE is below the given amount, they are considered equal
     private static final float TOLERANCE = 5;
 
     public CanvasView(Context context, AttributeSet attrs) {
@@ -57,14 +58,54 @@ public class CanvasView extends View{
         mCanvas = new Canvas(mBitmap);
     }
 
-    private void onTouch(float x, float y){
+    private void firstTouch(float x, float y){
         mPath = moveTo(x, y);
         mX = x;
         mY = y;
     }
 
+//    moving method - that includes a catch that resets the value of x and y if they exceed TOLERANCE (set above)
     private void moveTouch(float x, float y){
         float dx = Math.abs(x - mX);
         float dy = Math.abs(y - mY);
+        if(dx >= TOLERANCE || dy >= TOLERANCE){
+            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) /2);
+            mX = x;
+            mY = y;
+        }
+    }
+
+    public void clearCanvas(){
+        mPath.reset();
+        invalidate();
+    }
+
+    private void upTouch(){
+        mPath.lineTo(mX, mY);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN;
+                firstTouch(x, y);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_MOVE;
+                moveTouch(x, y);
+                invalidate();
+                break;
+            case MotionEvent.ACTION_UP;
+                upTouch();
+                invalidate();
+                break;
+
+        }
+
+        return true;
+
     }
 }
