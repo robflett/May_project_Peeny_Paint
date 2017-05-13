@@ -72,6 +72,8 @@ public class CanvasView extends View{
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+//        SET BACKGROUND COLOR TO BLACK
+        canvas.drawColor(Color.BLACK);
         canvas.drawPath(mPath, mPaint);
     }
 
