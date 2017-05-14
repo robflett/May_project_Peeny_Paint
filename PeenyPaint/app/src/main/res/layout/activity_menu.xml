@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codeclan.peenypaint.MenuActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What would you like to do today?"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:padding="30dp"/>
+
+    <Button
+        android:id="@+id/draw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:text="Draw Something!"
+        android:onClick="onTuneButtonClicked"
+        app:layout_anchor="@+id/include3"
+        app:layout_anchorGravity="center_vertical|center_horizontal" />
+
+    <Button
+        android:id="@+id/tune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text="Play Something!"
+        android:onClick="onDrawButtonClicked"
+        app:layout_anchor="@+id/include3"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+
+</LinearLayout>
