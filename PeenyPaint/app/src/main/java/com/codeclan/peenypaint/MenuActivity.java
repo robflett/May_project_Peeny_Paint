@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onDrawButtonClicked(View view) {
-        Intent intent = new Intent(this, CanvasView.class);
+        Intent intent = new Intent(this, DrawActivity.class);
         startActivity(intent);
     }
 

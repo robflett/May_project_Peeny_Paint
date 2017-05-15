@@ -7,7 +7,7 @@
     android:background="#ffffff"
     tools:context="com.codeclan.peenypaint.ColourTuneActivity">
 
-    <com.codeclan.peenypaint.CanvasView
+    <com.codeclan.peenypaint.ColourTuneActivity
         android:layout_width="match_parent"
         android:id="@+id/canvas"
         android:layout_alignParentTop="true"
